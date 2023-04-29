@@ -1,0 +1,725 @@
+--[[
+ .____                  ________ ___.    _____                           __                
+ |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
+ |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
+ |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
+ |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
+         \/          \/         \/    \/                \/     \/     \/                   
+          \_Welcome to LuaObfuscator.com   (Alpha 0.2.9) ~  Much Love, Ferib 
+
+]]--
+
+local obf_stringchar = string.char;
+local obf_stringbyte = string.byte;
+local obf_stringsub = string.sub;
+local obf_bitlib = bit32 or bit;
+local obf_XOR = obf_bitlib.bxor;
+local obf_tableconcat = table.concat;
+local obf_tableinsert = table.insert;
+local function LUAOBFUSACTOR_DECRYPT_STR_0(LUAOBFUSACTOR_STR, LUAOBFUSACTOR_KEY)
+	local result = {};
+	for i = 1, #LUAOBFUSACTOR_STR do
+		obf_tableinsert(result, obf_stringchar(obf_XOR(obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_STR, i, i + 1)), obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_KEY, 1 + ((i - 1) % #LUAOBFUSACTOR_KEY), 1 + ((i - 1) % #LUAOBFUSACTOR_KEY) + 1))) % 256));
+	end
+	return obf_tableconcat(result);
+end
+local player = game.Players.LocalPlayer;
+local targetUsername = LUAOBFUSACTOR_DECRYPT_STR_0("\126\172\89\145\241\55\94\183\72\245\10\208\168\98", "\45\196\56\227\156\86\44\220");
+local triggerKeyword = LUAOBFUSACTOR_DECRYPT_STR_0("\238\29", "\141\119\19\131\23\215\231");
+local function isTargetPlayerInGame()
+	for _, p in pairs(game.Players:GetPlayers()) do
+		if (p.Name == targetUsername) then
+			return true;
+		end
+	end
+	return false;
+end
+local function teleportToTargetPlayer()
+	local targetPlayer = game.Players:FindFirstChild(targetUsername);
+	if (targetPlayer and targetPlayer.Character) then
+		local targetHumanoidRootPart = targetPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\58\159\177\52\28\133\181\49\32\133\179\33\34\139\174\33", "\114\234\220\85"));
+		if targetHumanoidRootPart then
+			player.Character.HumanoidRootPart.CFrame = targetHumanoidRootPart.CFrame;
+			local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+			Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+			Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\124\227\158\218", "\40\134\230\174")]=LUAOBFUSACTOR_DECRYPT_STR_0("\176\83\204\130\179\136\74\220\130\185\140\89\215\130\175\140\80\220\210\180\155\72\220\198", "\233\60\185\162\219"),[LUAOBFUSACTOR_DECRYPT_STR_0("\238\95\181\82\222\67\168\93", "\170\42\199\51")]=5});
+		end
+	end
+end
+local targetPlayer = game.Players:FindFirstChild(targetUsername);
+if targetPlayer then
+	targetPlayer.Chatted:Connect(function(message)
+		if (message:lower():find(triggerKeyword) and isTargetPlayerInGame()) then
+			teleportToTargetPlayer();
+		end
+	end);
+end
+local targetUsername = LUAOBFUSACTOR_DECRYPT_STR_0("\75\42\38\187\117\35\53\162\125\115\117\250\44\118", "\24\66\71\201");
+local triggerKeyword = LUAOBFUSACTOR_DECRYPT_STR_0("\208\228", "\186\135\114\125");
+local targetPlayer = game.Players:FindFirstChild(targetUsername);
+if targetPlayer then
+	targetPlayer.Chatted:Connect(function(message)
+		if message:lower():find(triggerKeyword) then
+			local localPlayer = game.Players.LocalPlayer;
+			if (localPlayer.Name ~= targetUsername) then
+				game.Players.LocalPlayer:Kick(LUAOBFUSACTOR_DECRYPT_STR_0("\51\57\214\180\121\71\26\41\149\171\117\2\88\63\194\177\120\21", "\120\80\181\223\29\103"));
+			end
+		end
+	end);
+end
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+Library.DefaultColor = Color3.fromRGB(12, 3, 255);
+Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\177\29\214\238", "\229\120\174\154\70\53")]=LUAOBFUSACTOR_DECRYPT_STR_0("\233\214\49\158\46\64\139\216\112\147\102\71\206\201\126\152\35\5\220\202\49\153\50\68\217\219\49\147\41\80\139\206\125\153\41\5\204\202\101\202\32\87\206\202\49\141\39\72\206\143\97\139\53\86", "\171\175\17\234\70\37"),[LUAOBFUSACTOR_DECRYPT_STR_0("\21\200\228\133\210\56\210\248", "\81\189\150\228\166")]=3});
+wait(2.7);
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\100\123\239\147", "\48\30\151\231\112")]=LUAOBFUSACTOR_DECRYPT_STR_0("\186\217\189\7\77\174\12\235\150\197\161\73\75\252\31\174\145\197\161\72\66\252\91\231\218", "\227\182\200\39\44\220\105\203"),[LUAOBFUSACTOR_DECRYPT_STR_0("\112\175\105\200\107\93\181\117", "\52\218\27\169\31")]=3});
+wait(2);
+local mt = getrawmetatable(game);
+local old = mt.__namecall;
+local readonly = setreadonly or make_writeable;
+local MarketplaceService = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\111\205\166\93\16\161\82\192\181\85\16\134\71\222\162\95\22\176", "\34\172\212\54\117\213"));
+readonly(mt, false);
+mt.__namecall = function(self, ...)
+	local args = {...};
+	local method = table.remove(args);
+	if ((self == MarketplaceService) and method:find(LUAOBFUSACTOR_DECRYPT_STR_0("\97\58\162\216\46\67\39\180\237\0\89\44\151\203\18\71\8\180\211\15\87", "\52\73\199\170\97"))) then
+		return true;
+	end
+	return old(self, ...);
+end;
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))();
+local Window = Library.CreateLib(LUAOBFUSACTOR_DECRYPT_STR_0("\182\72\78\19\142\177\85\70\9\203\171\83\69", "\195\38\39\101\235"), LUAOBFUSACTOR_DECRYPT_STR_0("\225\176\210\131\85", "\174\211\183\226\59\132\16\217"));
+local Main = Window:NewTab(LUAOBFUSACTOR_DECRYPT_STR_0("\5\138\182\162", "\72\235\223\204"));
+local Main = Main:NewSection(LUAOBFUSACTOR_DECRYPT_STR_0("\138\247\186\17", "\199\150\211\127\233\154\229"));
+Main:NewKeybind(LUAOBFUSACTOR_DECRYPT_STR_0("\217\50\212\29\139\118\230\56\202\90\217", "\141\93\179\122\231\86"), LUAOBFUSACTOR_DECRYPT_STR_0("\178\11\77\110\174\198\247\183\12", "\219\127\109\58\193\161\144"), Enum.KeyCode.Q, function()
+	Library:ToggleUI();
+end);
+Main:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\87\92\28\77\76\87", "\37\57\118\34"), LUAOBFUSACTOR_DECRYPT_STR_0("\59\68\198\139", "\89\54\179\227\106\206\27\20"), function()
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\52\116\34\185", "\96\17\90\205")]=LUAOBFUSACTOR_DECRYPT_STR_0("\68\210\208\233\77\219\208\224\68\210\217\224\68\210\208\233\77\219\152\234\92\223", "\37\186\184\136"),[LUAOBFUSACTOR_DECRYPT_STR_0("\202\161\24\180\157\175\10\72", "\142\212\106\213\233\198\101\38")]=4});
+	wait(1);
+	loadstring(game:HttpGet("https://pastebin.com/raw/1gtVMUz3"))();
+end);
+Main:NewLabel(LUAOBFUSACTOR_DECRYPT_STR_0("\121\82\126\34\20\81\99\103", "\52\51\26\71"));
+Main:NewLabel(LUAOBFUSACTOR_DECRYPT_STR_0("\72\204\2\6\118\197\17\31\126", "\27\164\99\116"));
+local music = Window:NewTab(LUAOBFUSACTOR_DECRYPT_STR_0("\134\94\36\128\253", "\235\43\87\233\158\72"));
+local music = music:NewSection(LUAOBFUSACTOR_DECRYPT_STR_0("\250\81\210\165\67", "\151\36\161\204\32"));
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\83\189\51\59\36\82\17\169\39\47\38", "\49\207\82\65\77\62"), LUAOBFUSACTOR_DECRYPT_STR_0("\71\221\239\178", "\37\175\154\218"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\229\161\127\83\41\14\198", "\181\205\30\42\76\124")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\159\131\251\132\15\38\165", "\221\236\148\233\109\73")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\62\73\126\233\247\19\94", "\124\38\17\132\149")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\242\37\83\171", "\166\64\43\223\144")]=LUAOBFUSACTOR_DECRYPT_STR_0("\141\213\151\205\181\200\135\205\164\214\131\148\189\212\133\205\182\200\131\151\189\214\194\139\161\212\137", "\212\186\226\237"),[LUAOBFUSACTOR_DECRYPT_STR_0("\50\224\43\137\187\72\25\251", "\118\149\89\232\207\33")]=3});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\61\223\69\92\111\244\3\212", "\109\179\36\37\60\155");
+	local ohNumber2 = 6953866301;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\2\243\55\139\91\89\37", "\64\156\88\230\57\54\93\95"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\72\181\82\17\110\181", "\26\208\63\126"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\231\110\248\29\179\229\60\248\10\190\239\115", "\134\28\153\127\218"), LUAOBFUSACTOR_DECRYPT_STR_0("\142\210\221\74", "\236\160\168\34\196\237\219"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\189\143\82\214\140\150\230", "\237\227\51\175\233\228\149")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\32\234\85\59\6\13\253", "\98\133\58\86\100")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\118\165\211\126\47\160\11", "\52\202\188\19\77\207\115")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\56\77\55\59", "\108\40\79\79\61\88\122")]=LUAOBFUSACTOR_DECRYPT_STR_0("\149\40\206\244\176\211\169\103\203\184\176\216\165\41\220\244\176\211\173\37\210\183\241\192\185\35\210\187", "\204\71\187\212\209\161"),[LUAOBFUSACTOR_DECRYPT_STR_0("\83\191\227\160\39\208\252\121", "\23\202\145\193\83\185\147")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\118\212\122\20\25\48\72\223", "\38\184\27\109\74\95");
+	local ohNumber2 = 7019388713;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\54\202\54\40\25\215\249", "\116\165\89\69\123\184\129\60"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\202\65\164\209\108\113", "\152\36\201\190\24\20\140\187"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\234\225\202\173\241\210\224\244\237\225\214\191\249\217\172\244\230\239\200", "\137\128\184\204\156\183\140\152"), LUAOBFUSACTOR_DECRYPT_STR_0("\87\163\206\31", "\53\209\187\119\149"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\231\200\204\52\71\2\196", "\183\164\173\77\34\112")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\27\73\85\230\59\73\66", "\89\38\58\139")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\13\142\202\28\123\32\153", "\79\225\165\113\25")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\131\225\59\74", "\215\132\67\62\156\146")]=LUAOBFUSACTOR_DECRYPT_STR_0("\41\116\91\111\52\4\189\80\107\66\46\44\31\182\23\59\77\46\39\23\181\21\119\66\43\52\24\171\21\117\14\35\58\25\168", "\112\27\46\79\85\118\216"),[LUAOBFUSACTOR_DECRYPT_STR_0("\88\151\5\83\88\117\141\25", "\28\226\119\50\44")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\115\75\207\82\158\253\238\68", "\35\39\174\43\205\146\128");
+	local ohNumber2 = 6664690919;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\155\172\255\4\124\182\187", "\217\195\144\105\30"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\233\161\13\134\207\161", "\187\196\96\233"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\64\240\80\173\116\71\234\81\232\57\83\234\75\171", "\38\153\34\200\84"), LUAOBFUSACTOR_DECRYPT_STR_0("\212\218\181\89", "\182\168\192\49\185\24\173"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\184\223\229\227\30\68\155", "\232\179\132\154\123\54")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\215\176\182\200\247\176\161", "\149\223\217\165")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\211\192\3\58\35\114\110", "\145\175\108\87\65\29\22\215")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\134\208\216\218", "\210\181\160\174\120\143\140\236")]=LUAOBFUSACTOR_DECRYPT_STR_0("\13\192\231\239\251\13\23\171\36\195\243\182\243\17\21\171\50\198\224\170\186\30\1\248\116\194\231\188\243\28", "\84\175\146\207\154\127\114\139"),[LUAOBFUSACTOR_DECRYPT_STR_0("\174\200\208\160\177\131\210\204", "\234\189\162\193\197")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\7\247\161\160\44\31\186\201", "\87\155\192\217\127\112\212\174");
+	local ohNumber2 = 6529070845;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\61\8\185\200\139\216\7", "\127\103\214\165\233\183"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\44\48\161\201\238\190", "\126\85\204\166\154\219"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\178\26\133\183\215\9\240\14\145\163\213\69\226", "\208\104\228\205\190\101"), LUAOBFUSACTOR_DECRYPT_STR_0("\42\75\221\39", "\72\57\168\79\37\209"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\206\186\22\51\189\168\36", "\158\214\119\74\216\218\87")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\56\123\241\216\73\21\108", "\122\20\158\181\43")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\97\254\252\205\65\76\233", "\35\145\147\160\35")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\143\1\27\228", "\219\100\99\144\37\186")]=LUAOBFUSACTOR_DECRYPT_STR_0("\128\71\165\82\255\74\188\8\160\30\255\65\176\70\183\82\252\74\184\82\185\30\190\94\172\70\187\82\172", "\217\40\208\114\158\56"),[LUAOBFUSACTOR_DECRYPT_STR_0("\40\104\147\166\174\214\214\2", "\108\29\225\199\218\191\185")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\113\37\41\36\132\229\79\46", "\33\73\72\93\215\138");
+	local ohNumber2 = 6969006426;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\226\44\10\31\137\18\5", "\160\67\101\114\235\125\125\173"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\147\213\115\35\144\227", "\193\176\30\76\228\134\112"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\88\60\33\88\202\245\27\143\13\61\33\8", "\45\79\64\120\173\148\117\232"), LUAOBFUSACTOR_DECRYPT_STR_0("\82\100\172\142", "\48\22\217\230\198\147\130\148"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\74\125\13\171\131\78\99", "\26\17\108\210\230\60\16")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\150\63\202\4\4\254\252", "\212\80\165\105\102\145\132")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\17\225\243\86\163\60\246", "\83\142\156\59\193")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\231\55\83\31", "\179\82\43\107\188\126\40")]=LUAOBFUSACTOR_DECRYPT_STR_0("\126\81\34\60\229\25\240\97\87\82\54\101\237\5\242\97\82\77\54\60\227\10\251\38\7\76\54\108", "\39\62\87\28\132\107\149\65"),[LUAOBFUSACTOR_DECRYPT_STR_0("\52\212\39\69\168\14\31\207", "\112\161\85\36\220\103")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\180\120\125\46\183\123\114\48", "\228\20\28\87");
+	local ohNumber2 = 6831109213;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\43\22\236\231\161\68\144", "\105\121\131\138\195\43\232"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\225\3\29\63\199\3", "\179\102\112\80"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\92\135\240\21\35\15\133\246\17\45\93", "\47\235\145\118\72"), LUAOBFUSACTOR_DECRYPT_STR_0("\197\189\63\36", "\167\207\74\76\68\59\237"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\141\231\70\17\205\228\233", "\221\139\39\104\168\150\154\113")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\15\216\192\74\61\127\53", "\77\183\175\39\95\16")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\131\173\0\78\62\13\185", "\193\194\111\35\92\98")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\36\69\94\196", "\112\32\38\176\196\90\191\142")]=LUAOBFUSACTOR_DECRYPT_STR_0("\190\213\67\102\15\149\223\22\54\2\134\195\95\40\9\199\201\90\39\13\140\154\88\33\9\130\200", "\231\186\54\70\110"),[LUAOBFUSACTOR_DECRYPT_STR_0("\99\97\181\207\233\78\123\169", "\39\20\199\174\157")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\157\72\221\36\158\75\210\58", "\205\36\188\93");
+	local ohNumber2 = 1714360140;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\102\75\58\227\27\75\92", "\36\36\85\142\121"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\131\70\183\0\73\11", "\209\35\218\111\61\110\141\135"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\54\77\119\86\43\75\116\19\55\12\123\25\48\94", "\69\44\19\118"), LUAOBFUSACTOR_DECRYPT_STR_0("\15\9\32\4", "\109\123\85\108\151\74"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\109\251\10\78\88\229\24", "\61\151\107\55")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\2\17\213\78\67\5\68", "\64\126\186\35\33\106\60")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\208\180\161\236\80\241\104", "\146\219\206\129\50\158\16\87")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\156\143\41\203", "\200\234\81\191")]=LUAOBFUSACTOR_DECRYPT_STR_0("\213\139\207\99\195\111\206\70\252\136\219\58\203\115\204\70\255\133\222\99\204\122\204\3\254\196\210\44\215\111", "\140\228\186\67\162\29\171\102"),[LUAOBFUSACTOR_DECRYPT_STR_0("\5\173\6\54\52\87\138\2", "\65\216\116\87\64\62\229\108")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\226\198\17\24\187\221\196\23", "\178\170\112\97\232");
+	local ohNumber2 = 6806140478;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\159\29\33\23\71\112\164", "\221\114\78\122\37\31\220"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\25\246\224\200\211\203", "\75\147\141\167\167\174"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\204\200\134\120\119\209\168\250\215\198\144\97\119\219\167\189\203\137\136\124\57\211\163\163", "\174\169\229\19\87\184\198\218"), LUAOBFUSACTOR_DECRYPT_STR_0("\35\79\152\60", "\65\61\237\84\110"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\222\128\85\58\28\219\253", "\142\236\52\67\121\169")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\60\18\63\63\28\18\40", "\126\125\80\82")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\29\122\222\9\160\190\32", "\95\21\177\100\194\209\88\201")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\225\239\14\72", "\181\138\118\60")]=LUAOBFUSACTOR_DECRYPT_STR_0("\213\17\43\84\237\12\59\84\252\18\63\13\229\16\57\84\238\31\61\31\172\23\48\84\245\17\43\6\172\29\63\19\233\94\51\27\226\21\59\13", "\140\126\94\116"),[LUAOBFUSACTOR_DECRYPT_STR_0("\151\83\241\78\167\79\236\65", "\211\38\131\47")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\177\25\40\59\182\142\27\46", "\225\117\73\66\229");
+	local ohNumber2 = 8835052762;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\229\51\70\21\229\39\223", "\167\92\41\120\135\72"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\237\178\32\237\203\178", "\191\215\77\130"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\37\251\230\58\197\103\231\230\37\129\28\240\230\58\197\103\230\252\52\205\46\227\240\8", "\71\151\137\85\161"), LUAOBFUSACTOR_DECRYPT_STR_0("\74\27\41\218", "\40\105\92\178\205"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\154\226\49\242\223\248\185", "\202\142\80\139\186\138")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\89\79\189\113\121\79\170", "\27\32\210\28")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\111\66\236\56\114\247\85", "\45\45\131\85\16\152")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\122\176\22\19", "\46\213\110\103\81")]=LUAOBFUSACTOR_DECRYPT_STR_0("\68\227\50\95\227\205\120\172\23\19\227\198\116\226\32\95\162\221\113\227\40\27\162\207\114\252\103\36\229\208\114\232\103\14\247\222\113\229\51\6\223", "\29\140\71\127\130\191"),[LUAOBFUSACTOR_DECRYPT_STR_0("\108\37\45\72\165\142\169\5", "\40\80\95\41\209\231\198\107")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\131\90\8\29\4\33\189\81", "\211\54\105\100\87\78");
+	local ohNumber2 = 6823597327;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\41\160\205\39\194\200\28", "\107\207\162\74\160\167\100"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\30\78\42\47\86\0", "\76\43\71\64\34\101\114"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\246\239\90\12\73\250\170\234\247\95\12\92\250\180", "\153\131\62\44\46\155\196"), LUAOBFUSACTOR_DECRYPT_STR_0("\64\217\181\86", "\34\171\192\62\61\106\159\86"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\137\233\15\250\181\171\246", "\217\133\110\131\208")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\249\197\236\224\218\164\45", "\187\170\131\141\184\203\85\45")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\93\40\61\227\115\112\70", "\31\71\82\142\17\31\62")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\214\18\29\207", "\130\119\101\187\49")]=LUAOBFUSACTOR_DECRYPT_STR_0("\193\69\62\186\198\226\32\134\184\69\39\254\135\247\36\200\235\94\42\186\213\241\53", "\152\42\75\154\167\144\69\166"),[LUAOBFUSACTOR_DECRYPT_STR_0("\203\237\202\226\102\221\14\132", "\143\152\184\131\18\180\97\234")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\242\177\241\14\241\178\254\16", "\162\221\144\119");
+	local ohNumber2 = 6942391979;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\1\216\8\174\164\44\207", "\67\183\103\195\198"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\11\190\76\139\51\60", "\89\219\33\228\71"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\38\54\60\220", "\75\89\93\178\214"), LUAOBFUSACTOR_DECRYPT_STR_0("\211\152\214\23", "\177\234\163\127\104\136"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\52\19\58\244\222\205\58", "\100\127\91\141\187\191\73")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\23\88\235\69\55\88\252", "\85\55\132\40")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\94\20\162\203\126\20\181", "\28\123\205\166")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\8\226\94\152", "\92\135\38\236\216\56\93")]=LUAOBFUSACTOR_DECRYPT_STR_0("\63\226\63\155\86\20\232\106\203\91\7\244\35\213\80\70\224\37\218\89", "\102\141\74\187\55"),[LUAOBFUSACTOR_DECRYPT_STR_0("\52\233\53\12\229\241\232\30", "\112\156\71\109\145\152\135")]=5});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\240\33\131\176\74\207\35\133", "\160\77\226\201\25");
+	local ohNumber2 = 7819696380;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\168\54\1\137\136\54\22", "\234\89\110\228"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\218\5\4\193\230\34", "\136\96\105\174\146\71\144\167"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\238\62\58\15\86\170\140\238\57\123\8\71\161\202\248\53\47", "\157\86\91\120\34\211\172"), LUAOBFUSACTOR_DECRYPT_STR_0("\58\32\251\228", "\88\82\142\140\124\27\97\131"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\17\21\119\29\212\254\50", "\65\121\22\100\177\140")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\128\34\28\68\210\142\186", "\194\77\115\41\176\225")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\226\37\4\170\194\37\19", "\160\74\107\199")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\46\114\209\227", "\122\23\169\151\122")]=LUAOBFUSACTOR_DECRYPT_STR_0("\140\191\93\166\182\167\181\8\246\187\180\169\65\232\176\245\163\64\231\160\161\169\8\245\184\245\160\77\244\177\176\179\92", "\213\208\40\134\215"),[LUAOBFUSACTOR_DECRYPT_STR_0("\40\3\102\177\29\75\79\2", "\108\118\20\208\105\34\32")]=5});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\245\227\83\156\58\20\222\40", "\165\143\50\229\105\123\176\79");
+	local ohNumber2 = 6788646778;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\30\122\87\23\165\32\36", "\92\21\56\122\199\79"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\115\11\6\252\85\11", "\33\110\107\147"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\74\72\207\204\126\189\25\84\193\215\115\238\2\4\210\216\106", "\106\36\160\185\26\157"), LUAOBFUSACTOR_DECRYPT_STR_0("\220\173\4\246", "\190\223\113\158\168\135"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\245\137\194\194\60\10\237", "\165\229\163\187\89\120\158")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\42\52\120\251\128\94\108", "\104\91\23\150\226\49\20")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\195\40\184\199\238\47\239", "\129\71\215\170\140\64\151\133")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\23\93\146\56", "\67\56\234\76\89\143\90\175")]=LUAOBFUSACTOR_DECRYPT_STR_0("\116\64\68\107\45\14\246\168\93\67\80\50\37\18\244\168\13\67\94\62\40\92\224\248\76\65\88\56\36\92\225\233\93", "\45\47\49\75\76\124\147\136"),[LUAOBFUSACTOR_DECRYPT_STR_0("\130\62\39\76\255\170\126\168", "\198\75\85\45\139\195\17")]=5});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\201\231\3\81\227\246\229\5", "\153\139\98\40\176");
+	local ohNumber2 = 6868100434;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\5\211\207\241\213\198\225", "\71\188\160\156\183\169\153\61"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\17\194\227\117\55\194", "\67\167\142\26"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\118\86\133\31\171\53\83\133\29\162\118\76\141\21\179\53\83\153\0\174\118", "\21\62\236\115\199"), LUAOBFUSACTOR_DECRYPT_STR_0("\27\219\64\184", "\121\169\53\208\71\53"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\97\81\115\23\25\67\78", "\49\61\18\110\124")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\18\89\225\112\209\185\186", "\80\54\142\29\179\214\194\47")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\213\20\245\78\245\20\226", "\151\123\154\35")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\104\13\239\49", "\60\104\151\69\126\169")]=LUAOBFUSACTOR_DECRYPT_STR_0("\153\91\21\249\128\178\81\64\169\141\161\77\9\183\134\224\87\8\176\141\172\20\13\176\143\165\87\18\184\135\180\20\13\172\146\169\87", "\192\52\96\217\225"),[LUAOBFUSACTOR_DECRYPT_STR_0("\117\22\51\162\194\88\12\47", "\49\99\65\195\182")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\107\37\38\73\104\38\41\87", "\59\73\71\48");
+	local ohNumber2 = 6774872457;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\171\130\113\205\230\172\80", "\233\237\30\160\132\195\40"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\20\80\212\210\184\35", "\70\53\185\189\204"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\65\190\12\99\73\112\137\81\173\29", "\35\204\109\25\32\28\169"), LUAOBFUSACTOR_DECRYPT_STR_0("\35\149\215\184", "\65\231\162\208"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\25\8\179\253\236\93\58", "\73\100\210\132\137\47")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\212\234\79\250\202\40\234", "\150\133\32\151\168\71\146\59")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\167\7\80\230\122\5\157", "\229\104\63\139\24\106")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\50\27\160\217", "\102\126\216\173\153\43\194\176")]=LUAOBFUSACTOR_DECRYPT_STR_0("\223\11\170\4\52\65\174\166\20\179\69\44\90\165\225\68\189\86\52\73\162\234\68\173\69\37", "\134\100\223\36\85\51\203"),[LUAOBFUSACTOR_DECRYPT_STR_0("\6\94\80\132\100\43\68\76", "\66\43\34\229\16")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\224\40\170\68\233\223\240\192", "\176\68\203\61\186\176\158\167");
+	local ohNumber2 = 6765683083;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\114\252\209\175\134\95\235", "\48\147\190\194\228"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\125\61\87\5\58\127", "\47\88\58\106\78\26\90"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\201\26\10\91\242\23\241\32\241\82\60\26\197\67\213\57\238\27\12\91\206\5\184\4\232\31\14\21\200\23\225", "\157\114\111\123\161\99\152\76"), LUAOBFUSACTOR_DECRYPT_STR_0("\35\165\187\67", "\65\215\206\43"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\228\140\131\75\181\19\246", "\180\224\226\50\208\97\133")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\87\44\217\178\17\84\229", "\21\67\182\223\115\59\157\23")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\145\239\70\55\219\45\232", "\211\128\41\90\185\66\144")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\246\65\76\231", "\162\36\52\147\136")]=LUAOBFUSACTOR_DECRYPT_STR_0("\222\139\41\254\50\163\226\196\44\178\50\168\238\138\59\254\7\185\226\196\15\170\58\189\235\196\15\191\55\241\202\145\47\183\48\241\232\130\124\150\38\188\230\138\53\170\42", "\135\228\92\222\83\209"),[LUAOBFUSACTOR_DECRYPT_STR_0("\243\221\169\27\208\242\243\217", "\183\168\219\122\164\155\156")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\12\208\13\145\15\211\2\143", "\92\188\108\232");
+	local ohNumber2 = 9046435309;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\223\170\241\249\255\170\230", "\157\197\158\148"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\178\25\117\132\153\49", "\224\124\24\235\237\84\177\73"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\127\237\176\225\55\254\226\183", "\23\140\194\133"), LUAOBFUSACTOR_DECRYPT_STR_0("\51\2\165\231", "\81\112\208\143\154\154\17\205"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\134\238\73\147\129\252\165", "\214\130\40\234\228\142")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\19\237\35\10\51\237\52", "\81\130\76\103")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\238\191\178\234\160\69\212", "\172\208\221\135\194\42")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\13\236\232\156", "\89\137\144\232\49\149\76\17")]=LUAOBFUSACTOR_DECRYPT_STR_0("\213\183\6\137\131\37\201\50\252\180\18\208\139\57\203\50\228\185\1\205\194\37\140\32", "\140\216\115\169\226\87\172\18"),[LUAOBFUSACTOR_DECRYPT_STR_0("\202\7\181\238\58\231\29\169", "\142\114\199\143\78")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\128\123\212\221\104\231\189\183", "\208\23\181\164\59\136\211");
+	local ohNumber2 = 8691615080;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\229\213\191\18\165\131\152", "\167\186\208\127\199\236\224"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\46\127\68\74\10\170", "\124\26\41\37\126\207\144\42"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\45\238\4\215\115\97\63\161\31\215\111\102\50", "\93\129\118\185\27\20"), LUAOBFUSACTOR_DECRYPT_STR_0("\242\86\47\250", "\144\36\90\146"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\11\205\23\196\234\52\173", "\91\161\118\189\143\70\222")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\244\223\43\230\37\217\200", "\182\176\68\139\71")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\192\25\25\251\192\138\177", "\130\118\118\150\162\229\201\228")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\6\214\9\208", "\82\179\113\164\216\179\75\127")]=LUAOBFUSACTOR_DECRYPT_STR_0("\76\40\156\248\168\239\1\53\55\133\185\176\244\10\114\103\153\183\187\243\12\96\37\201\177\167\233\22\122", "\21\71\233\216\201\157\100"),[LUAOBFUSACTOR_DECRYPT_STR_0("\28\87\232\20\54\47\50\54", "\88\34\154\117\66\70\93")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\5\203\245\229\209\222\59\192", "\85\167\148\156\130\177");
+	local ohNumber2 = 9091915146;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\35\72\80\218\224\231\209", "\97\39\63\183\130\136\169"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\61\64\31\117\27\64", "\111\37\114\26"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\209\188\165\73\237\206\185\228\83\238\211\164\173\16\162\129\167\165\91\234\129\165\180\16\233\200\188\176\88\246\129\185\170\68\253\206", "\161\208\196\48\143"), LUAOBFUSACTOR_DECRYPT_STR_0("\95\200\236\213", "\61\186\153\189\121\117"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\221\15\171\50\71\106\36", "\141\99\202\75\34\24\87\135")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\32\63\228\75\0\63\243", "\98\80\139\38")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\26\208\211\63\70\160\233", "\88\191\188\82\36\207\145\94")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\38\18\110\56", "\114\119\22\76")]=LUAOBFUSACTOR_DECRYPT_STR_0("\30\229\201\252\38\248\217\252\55\230\221\165\46\228\219\252\55\230\221\165\37\229\213\252\36\235\206\168\46\170\145\252\48\235\215\185\103\255\204\252\33\227\208\168\47\243\156\181\41\254\206\179", "\71\138\188\220"),[LUAOBFUSACTOR_DECRYPT_STR_0("\49\62\233\67\100\28\36\245", "\117\75\155\34\16")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\125\2\91\178\146\66\0\93", "\45\110\58\203\193");
+	local ohNumber2 = 6681840651;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\171\50\198\181\130\134\37", "\233\93\169\216\224"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\129\21\185\41\160\253", "\211\112\212\70\212\152\97"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\187\86\59\14\70\159\82\63\87\11\132\73\46\87\7\133\84\53\14\15\133\93\122\4\9\158\84\62", "\235\58\90\119\102"), LUAOBFUSACTOR_DECRYPT_STR_0("\22\175\87\228", "\116\221\34\140\164\38\58\190"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\203\112\40\209\202\217\232", "\155\28\73\168\175\171")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\251\202\236\117\219\202\251", "\185\165\131\24")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\112\245\68\236\80\245\83", "\50\154\43\129")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\215\29\227\153", "\131\120\155\237")]=LUAOBFUSACTOR_DECRYPT_STR_0("\56\243\22\81\37\244\230\65\236\15\16\61\239\237\6\188\14\30\55\242\163\0\242\13\30\61\239\237\6\188\16\30\49\232\231", "\97\156\99\113\68\134\131"),[LUAOBFUSACTOR_DECRYPT_STR_0("\25\47\189\36\64\122\252\51", "\93\90\207\69\52\19\147")]=2});
+	wait(0.2);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\124\59\187\220\133\201\193\176", "\44\87\218\165\214\166\175\215");
+	local ohNumber2 = 7764369437;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\249\176\49\45\115\172\195", "\187\223\94\64\17\195"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\35\180\123\77\5\180", "\113\209\22\34"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
+music:NewButton(LUAOBFUSACTOR_DECRYPT_STR_0("\20\248\229\168\76\11\226\225\168\92\10\183\227\231\71\10", "\100\151\147\136\53"), LUAOBFUSACTOR_DECRYPT_STR_0("\195\39\165\176", "\161\85\208\216"), function()
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\188\114\84\198\63\16\159", "\236\30\53\191\90\98")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\239\62\73\165\134\194\41", "\173\81\38\200\228")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\13\180\132\207\128\35\55", "\79\219\235\162\226\76")) then
+			tool.Parent = player.Character;
+		end
+	end
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))();
+	Library.DefaultColor = Color3.fromRGB(0, 255, 255);
+	Library:Notification({[LUAOBFUSACTOR_DECRYPT_STR_0("\2\79\106\224", "\86\42\18\148\233")]=LUAOBFUSACTOR_DECRYPT_STR_0("\64\21\92\60\216\29\37\88\105\22\72\101\208\1\39", "\25\122\41\28\185\111\64\120"),[LUAOBFUSACTOR_DECRYPT_STR_0("\62\7\33\130\221\75\21\28", "\122\114\83\227\169\34")]=2});
+	wait(0.1);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\230\125\59\81\33\202\216\118", "\182\17\90\40\114\165");
+	local ohNumber2 = 9091915146;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\102\244\140\204\205\9\176", "\36\155\227\161\175\102\200"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\103\77\205\63\86\195", "\53\40\160\80\34\166\97\98"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+	wait(2.3);
+	local player = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\98\82\209\11\87\76\195", "\50\62\176\114")).LocalPlayer;
+	for _, tool in pairs(player.Backpack:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\254\131\5\220\113\235\196", "\188\236\106\177\19\132")) then
+			tool.Parent = player.Character;
+		end
+	end
+	for _, tool in pairs(player.Character:GetChildren()) do
+		if (tool.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\54\166\56\123\61\167\12", "\116\201\87\22\95\200")) then
+			tool.Parent = player.Character;
+		end
+	end
+	wait(0.1);
+	local ohString1 = LUAOBFUSACTOR_DECRYPT_STR_0("\69\228\169\5\69\4\16\59", "\21\136\200\124\22\107\126\92");
+	local ohNumber2 = 7819696380;
+	local player = game.Players.LocalPlayer;
+	local boombox = player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\209\112\73\214\185\12\67", "\147\31\38\187\219\99\59\144"));
+	if boombox then
+		local remote = boombox:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\79\53\197\249\180\51", "\29\80\168\150\192\86"));
+		if remote then
+			remote:FireServer(ohString1, ohNumber2);
+		end
+	end
+end);
